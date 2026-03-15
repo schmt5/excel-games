@@ -10,7 +10,7 @@ const ROOMS = [
     title: "ZONE 1 // VORRATSLAGER",
     story: `Das Vorratslager ist verriegelt. Drinnen: Konserven, Wasser, Werkzeug. Draussen: Stöhnen. Das elektronische Schloss verlangt, dass du den <strong>Gesamtvorrat</strong> korrekt berechnest — erst dann öffnet es.`,
     taskText: `Im Regal stehen <strong>34 Dosen Bohnen</strong> und <strong>21 Dosen Thunfisch</strong>. Berechne den Gesamtbestand in Zelle <strong>B4</strong>. Schreibe eine echte Formel — keine einfache Zahl!`,
-    inputCell: { ref: "B4", placeholder: "=..." },
+    inputCell: { ref: "B4" },
     hint: "💡 Addiere die Werte direkt: =34+21 — oder verwende die Zellnamen B2 und B3!",
     validate: (val) => {
       const v = val.trim().replace(/\s/g, "").toLowerCase();
@@ -76,7 +76,7 @@ const ROOMS = [
     title: "ZONE 2 // MEDIZINRAUM",
     story: `Der Medizinraum. Antibiotika, Verbandsmaterial, Schmerzmittel. Jemand aus deiner Gruppe ist verletzt. Die Tür ist zu. Das System zeigt eine halbfertige Tabelle — eine Formel fehlt. Sie wurde aus der Zeile darüber kopiert.`,
     taskText: `In <strong>E2</strong> steht <strong>=C2*D2</strong> (Stück × Gewicht in g). Diese Formel wurde eine Zeile nach unten kopiert. Was steht dann automatisch in <strong>E3</strong>? Tippe die Formel ein.`,
-    inputCell: { ref: "E3", placeholder: "=..." },
+    inputCell: { ref: "E3" },
     hint: "💡 Excel passt Zeilennummern beim Kopieren automatisch an. Aus =C2*D2 wird in Zeile 3 → =C?*D?",
     validate: (val) => {
       const v = val.trim().replace(/\s/g, "").toLowerCase();
@@ -149,7 +149,7 @@ const ROOMS = [
     title: "ZONE 3 // FUNKRAUM",
     story: `Der Funkraum. Von hier aus kannst du Rettungssignale senden — aber nur wenn die Batterie lange genug hält. Das System berechnet automatisch den Verbrauch über 5 Tage. Es fehlt die <strong>Gesamtsumme</strong>.`,
     taskText: `Der tägliche Stromverbrauch steht in <strong>B2:B6</strong>. Berechne in <strong>B7</strong> den <strong>Gesamtverbrauch</strong> aller 5 Tage mit der Funktion SUMME().`,
-    inputCell: { ref: "B7", placeholder: "=SUMME(...)" },
+    inputCell: { ref: "B7" },
     hint: '💡 Der Bereich geht von B2 bis B6. Schreibe =SUMME(B2:B6) — der Doppelpunkt bedeutet "von bis".',
     validate: (val) => {
       const v = val.trim().replace(/\s/g, "").toLowerCase();
@@ -238,7 +238,7 @@ const ROOMS = [
     title: "ZONE 4 // BUNKER",
     story: `Der Bunker. Massivstahl, 2 Meter tief. Hier ist die Gruppe sicher. Die letzte Tür. Das System berechnet die Kalorienration pro Person — der Kalorienwert pro Dose steht in <strong>B1</strong> und soll beim Kopieren der Formel immer fixiert bleiben.`,
     taskText: `In <strong>C3</strong> soll stehen: Anzahl Dosen (B3) × Kalorien pro Dose (<strong>B1</strong>). B1 darf sich beim Kopieren nach unten <strong>nicht</strong> verändern. Schreibe die Formel mit absolutem Bezug.`,
-    inputCell: { ref: "C3", placeholder: "=...$...$..." },
+    inputCell: { ref: "C3" },
     hint: "💡 Fixiere B1 mit Dollarzeichen: $B$1 bleibt immer B1. Die vollständige Formel: =B3*$B$1",
     validate: (val) => {
       const v = val.trim().replace(/\s/g, "").toLowerCase();
@@ -411,7 +411,6 @@ function Sheet({ room, inputValue, inputState, onInputChange, onKeyDown }) {
                     <td key={cellIdx} className={cellClasses}>
                       <input
                         className="fer-cell-input"
-                        placeholder={room.inputCell.placeholder}
                         value={inputValue}
                         onChange={(e) => onInputChange(e.target.value)}
                         onKeyDown={onKeyDown}
