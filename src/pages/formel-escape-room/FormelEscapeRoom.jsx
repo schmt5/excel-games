@@ -699,6 +699,13 @@ export default function FormelEscapeRoom() {
               ✅ Zone 4 — <span>Absolute Bezüge mit $</span>
             </div>
           </div>
+          <div className="fer-password-block">
+            <div className="fer-password-label">Zugangscode freigeschaltet</div>
+            <div className="fer-password-value">563-HPD</div>
+            <div className="fer-password-hint">
+              // Bewahre diesen Code gut auf
+            </div>
+          </div>
           <button className="fer-btn-restart" onClick={restartGame}>
             ↩ NOCHMALS SPIELEN
           </button>

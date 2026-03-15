@@ -630,6 +630,65 @@
 .fer-summary-item span {
     color: var(--fer-green);
 }
+
+.fer-password-block {
+    margin-top: 2rem;
+    border: 1px solid var(--fer-green);
+    background: var(--fer-panel);
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+.fer-password-block::before {
+    content: "// ZUGANGSCODE";
+    position: absolute;
+    top: -0.65em;
+    left: 1rem;
+    background: var(--fer-panel);
+    padding: 0 0.5rem;
+    color: var(--fer-green-dim);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+}
+.fer-password-label {
+    font-size: 0.75rem;
+    color: var(--fer-green-dim);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
+.fer-password-value {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    font-weight: 900;
+    color: var(--fer-green);
+    letter-spacing: 0.2em;
+    text-shadow:
+        0 0 20px rgba(255, 60, 60, 0.7),
+        0 0 40px rgba(255, 60, 60, 0.3);
+    animation: fer-pw-glow 2s ease-in-out infinite;
+}
+@keyframes fer-pw-glow {
+    0%,
+    100% {
+        text-shadow:
+            0 0 20px rgba(255, 60, 60, 0.7),
+            0 0 40px rgba(255, 60, 60, 0.3);
+    }
+    50% {
+        text-shadow:
+            0 0 30px rgba(255, 60, 60, 1),
+            0 0 60px rgba(255, 60, 60, 0.5);
+    }
+}
+.fer-password-hint {
+    font-size: 0.75rem;
+    color: #664444;
+    letter-spacing: 0.1em;
+    margin-top: 0.25rem;
+}
 .fer-btn-restart {
     font-family: "Orbitron", sans-serif;
     background: transparent;
