@@ -1,19 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap");
 
 :root {
-    --ip-sand:       #f5e6c8;
-    --ip-sand2:      #e8d4a8;
-    --ip-ink:        #2a1a0a;
-    --ip-brown:      #6b3d1e;
-    --ip-brown2:     #8b5a2b;
-    --ip-gold:       #c8960a;
-    --ip-gold2:      #f0b429;
-    --ip-red:        #8b1a1a;
-    --ip-sea:        #1a4a5a;
-    --ip-sea2:       #2a6a7a;
-    --ip-green:      #2a5a2a;
-    --ip-parchment:  #f9f0dc;
-    --ip-shadow:     rgba(42, 26, 10, 0.35);
+    --ip-sand: #f5e6c8;
+    --ip-sand2: #e8d4a8;
+    --ip-ink: #2a1a0a;
+    --ip-brown: #6b3d1e;
+    --ip-brown2: #8b5a2b;
+    --ip-gold: #c8960a;
+    --ip-gold2: #f0b429;
+    --ip-red: #8b1a1a;
+    --ip-sea: #1a4a5a;
+    --ip-sea2: #2a6a7a;
+    --ip-green: #2a5a2a;
+    --ip-parchment: #f9f0dc;
+    --ip-shadow: rgba(42, 26, 10, 0.35);
 }
 
 /* ══════════════════════════════
@@ -22,10 +22,18 @@
 .ip-root {
     background: var(--ip-sea);
     background-image:
-        radial-gradient(ellipse at 20% 50%, rgba(26, 74, 90, 0.8) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(42, 106, 122, 0.4) 0%, transparent 50%);
+        radial-gradient(
+            ellipse at 20% 50%,
+            rgba(26, 74, 90, 0.8) 0%,
+            transparent 60%
+        ),
+        radial-gradient(
+            ellipse at 80% 20%,
+            rgba(42, 106, 122, 0.4) 0%,
+            transparent 50%
+        );
     min-height: 100vh;
-    font-family: 'Crimson Text', serif;
+    font-family: "Crimson Text", serif;
     color: var(--ip-ink);
     overflow-x: hidden;
     position: relative;
@@ -68,8 +76,12 @@
 }
 
 @keyframes ip-wave {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* ══════════════════════════════
@@ -81,42 +93,49 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1rem 2rem;
     position: relative;
     z-index: 1;
 }
 
 .ip-ship-emoji {
-    font-size: 5rem;
+    font-size: 3.5rem;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
     animation: ip-bob 3s ease-in-out infinite;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 @keyframes ip-bob {
-    0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50%       { transform: translateY(-10px) rotate(2deg); }
+    0%,
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
 }
 
 .ip-intro-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(2rem, 7vw, 4.5rem);
+    font-family: "Cinzel", serif;
+    font-size: clamp(1.6rem, 5vw, 3.2rem);
     font-weight: 900;
     color: var(--ip-gold2);
-    text-shadow: 3px 3px 0 var(--ip-brown), 0 0 40px rgba(240, 180, 41, 0.4);
+    text-shadow:
+        3px 3px 0 var(--ip-brown),
+        0 0 40px rgba(240, 180, 41, 0.4);
     letter-spacing: 0.05em;
     text-align: center;
     line-height: 1.1;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
 }
 
 .ip-intro-sub {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
     color: var(--ip-sand2);
     letter-spacing: 0.25em;
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.25rem;
     text-transform: uppercase;
 }
 
@@ -125,16 +144,18 @@
     background: var(--ip-parchment);
     border: 3px solid var(--ip-brown2);
     border-radius: 4px;
-    padding: 2rem 2.5rem;
+    padding: 1.25rem 1.75rem;
     max-width: 560px;
     width: 100%;
-    box-shadow: 0 8px 32px var(--ip-shadow), inset 0 0 40px rgba(200, 150, 10, 0.08);
+    box-shadow:
+        0 8px 32px var(--ip-shadow),
+        inset 0 0 40px rgba(200, 150, 10, 0.08);
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
 }
 .ip-scroll-box::before,
 .ip-scroll-box::after {
-    content: '';
+    content: "";
     position: absolute;
     left: -3px;
     right: -3px;
@@ -142,40 +163,51 @@
     background: var(--ip-brown2);
     border-radius: 4px;
 }
-.ip-scroll-box::before { top: -3px; }
-.ip-scroll-box::after  { bottom: -3px; }
+.ip-scroll-box::before {
+    top: -3px;
+}
+.ip-scroll-box::after {
+    bottom: -3px;
+}
 
 .ip-scroll-label {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     color: var(--ip-brown);
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
 }
 
 .ip-scroll-text {
-    font-size: 1.05rem;
-    line-height: 1.9;
+    font-size: 0.95rem;
+    line-height: 1.65;
     color: var(--ip-ink);
 }
-.ip-scroll-text p { margin-bottom: 0.7rem; }
-.ip-scroll-text p:last-child { margin-bottom: 0; }
+.ip-scroll-text p {
+    margin-bottom: 0.4rem;
+}
+.ip-scroll-text p:last-child {
+    margin-bottom: 0;
+}
 
-.ip-gold { color: var(--ip-gold); font-weight: 600; }
+.ip-gold {
+    color: var(--ip-gold);
+    font-weight: 600;
+}
 
 /* Chapter badges */
 .ip-chapters {
     display: flex;
-    gap: 0.6rem;
-    margin-bottom: 2rem;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .ip-chapter-badge {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 0.7rem;
     padding: 0.4rem 0.9rem;
     border: 2px solid var(--ip-brown2);
@@ -191,7 +223,7 @@
 }
 .ip-chapter-badge span {
     display: block;
-    font-family: 'Crimson Text', serif;
+    font-family: "Crimson Text", serif;
     font-size: 0.75rem;
     color: inherit;
     opacity: 0.7;
@@ -200,22 +232,32 @@
 
 /* Sail button */
 .ip-btn-sail {
-    font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
+    font-family: "Cinzel", serif;
+    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 0.15em;
-    padding: 1rem 3rem;
+    padding: 0.75rem 2.5rem;
     background: var(--ip-gold);
     color: var(--ip-ink);
     border: none;
     border-radius: 2px;
     cursor: pointer;
-    box-shadow: 0 4px 0 var(--ip-brown), 0 8px 20px var(--ip-shadow);
+    box-shadow:
+        0 4px 0 var(--ip-brown),
+        0 8px 20px var(--ip-shadow);
     transition: all 0.15s;
     text-transform: uppercase;
 }
-.ip-btn-sail:hover  { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ip-brown), 0 12px 28px var(--ip-shadow); }
-.ip-btn-sail:active { transform: translateY(2px);  box-shadow: 0 2px 0 var(--ip-brown); }
+.ip-btn-sail:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 6px 0 var(--ip-brown),
+        0 12px 28px var(--ip-shadow);
+}
+.ip-btn-sail:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--ip-brown);
+}
 
 /* ══════════════════════════════
    GAME SCREEN
@@ -225,7 +267,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem 1rem 6rem;
+    padding: 0.75rem 1rem 4rem;
     position: relative;
     z-index: 1;
 }
@@ -236,13 +278,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .ip-chapter-title {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: clamp(0.85rem, 2.5vw, 1.1rem);
     color: var(--ip-gold2);
     font-weight: 700;
@@ -257,7 +299,7 @@
 }
 
 .ip-score-display {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 0.85rem;
     color: var(--ip-gold2);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -269,25 +311,34 @@
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .ip-map-dot {
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     border: 2px solid var(--ip-brown2);
     background: rgba(42, 26, 10, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     color: var(--ip-sand2);
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     transition: all 0.4s;
 }
-.ip-map-dot.done    { background: var(--ip-gold); border-color: var(--ip-gold2); color: var(--ip-ink); }
-.ip-map-dot.current { background: var(--ip-brown); border-color: var(--ip-gold2); color: var(--ip-gold2); animation: ip-pulse-map 1.5s infinite; }
+.ip-map-dot.done {
+    background: var(--ip-gold);
+    border-color: var(--ip-gold2);
+    color: var(--ip-ink);
+}
+.ip-map-dot.current {
+    background: var(--ip-brown);
+    border-color: var(--ip-gold2);
+    color: var(--ip-gold2);
+    animation: ip-pulse-map 1.5s infinite;
+}
 
 .ip-map-line {
     width: 24px;
@@ -295,11 +346,19 @@
     background: var(--ip-brown2);
     opacity: 0.5;
 }
-.ip-map-line.done { background: var(--ip-gold); opacity: 1; }
+.ip-map-line.done {
+    background: var(--ip-gold);
+    opacity: 1;
+}
 
 @keyframes ip-pulse-map {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(240, 180, 41, 0.4); }
-    50%       { box-shadow: 0 0 0 6px rgba(240, 180, 41, 0); }
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(240, 180, 41, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 6px rgba(240, 180, 41, 0);
+    }
 }
 
 /* Game card */
@@ -315,24 +374,26 @@
 
 .ip-card-header {
     background: linear-gradient(135deg, var(--ip-brown2), var(--ip-brown));
-    padding: 1rem 1.5rem;
+    padding: 0.6rem 1.25rem;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
     border-bottom: 2px solid var(--ip-brown2);
 }
 
-.ip-card-icon { font-size: 1.6rem; }
+.ip-card-icon {
+    font-size: 1.3rem;
+}
 
 .ip-card-chapter-label {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 0.65rem;
     letter-spacing: 0.2em;
     color: var(--ip-sand2);
     text-transform: uppercase;
 }
 .ip-card-quest {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     color: var(--ip-gold2);
     font-weight: 700;
@@ -340,44 +401,50 @@
 }
 
 .ip-card-body {
-    padding: 1.5rem;
+    padding: 1rem 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 0.75rem;
 }
 
 /* Narration */
 .ip-narration {
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 0.9rem;
+    line-height: 1.6;
     color: var(--ip-ink);
     font-style: italic;
     border-left: 3px solid var(--ip-gold);
-    padding-left: 1rem;
+    padding-left: 0.75rem;
 }
-.ip-narration strong { font-style: normal; color: var(--ip-brown); }
+.ip-narration strong {
+    font-style: normal;
+    color: var(--ip-brown);
+}
 
 /* Task box */
 .ip-task-box {
     background: rgba(107, 61, 30, 0.08);
     border: 2px dashed var(--ip-brown2);
     border-radius: 2px;
-    padding: 1rem 1.25rem;
+    padding: 0.6rem 1rem;
 }
 .ip-task-label {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 0.65rem;
     letter-spacing: 0.2em;
     color: var(--ip-brown);
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 .ip-task-text {
-    font-size: 1.05rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.5;
     color: var(--ip-ink);
 }
-.ip-task-text strong { color: var(--ip-red); font-weight: 700; }
+.ip-task-text strong {
+    color: var(--ip-red);
+    font-weight: 700;
+}
 
 /* ══════════════════════════════
    GRID / MAP
@@ -386,7 +453,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.35rem;
     overflow-x: auto;
     width: 100%;
 }
@@ -396,38 +463,38 @@
 }
 
 .ip-grid-col-header {
-    font-family: 'Cinzel', serif;
-    font-size: 0.8rem;
+    font-family: "Cinzel", serif;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--ip-brown);
     text-align: center;
-    padding: 0.3rem;
-    width: 48px;
+    padding: 0.2rem;
+    width: 42px;
     background: rgba(107, 61, 30, 0.1);
     border: 1px solid rgba(107, 61, 30, 0.2);
     user-select: none;
 }
 
 .ip-grid-row-header {
-    font-family: 'Cinzel', serif;
-    font-size: 0.8rem;
+    font-family: "Cinzel", serif;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--ip-brown);
     text-align: center;
-    padding: 0.3rem 0.4rem;
+    padding: 0.2rem 0.3rem;
     background: rgba(107, 61, 30, 0.1);
     border: 1px solid rgba(107, 61, 30, 0.2);
     user-select: none;
-    height: 48px;
+    height: 42px;
 }
 
 .ip-grid-cell {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     border: 1px solid rgba(107, 61, 30, 0.25);
     text-align: center;
     vertical-align: middle;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.15s;
     position: relative;
@@ -450,14 +517,27 @@
 }
 
 @keyframes ip-correct-cell {
-    0%   { transform: scale(1); }
-    40%  { transform: scale(1.2); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 @keyframes ip-wrong-cell {
-    0%, 100% { transform: translateX(0); }
-    25%       { transform: translateX(-4px); }
-    75%       { transform: translateX(4px); }
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
 }
 
 .ip-grid-cell.correct-flash {
@@ -487,8 +567,15 @@
 }
 
 @keyframes ip-highlight-pulse {
-    0%, 100% { box-shadow: inset 0 0 0 3px var(--ip-gold); }
-    50%       { box-shadow: inset 0 0 0 3px var(--ip-gold2), 0 0 12px rgba(240, 180, 41, 0.4); }
+    0%,
+    100% {
+        box-shadow: inset 0 0 0 3px var(--ip-gold);
+    }
+    50% {
+        box-shadow:
+            inset 0 0 0 3px var(--ip-gold2),
+            0 0 12px rgba(240, 180, 41, 0.4);
+    }
 }
 
 /* ══════════════════════════════
@@ -498,7 +585,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
 }
 
 /* Multiple choice */
@@ -510,7 +597,7 @@
     max-width: 480px;
 }
 .ip-mc-btn {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 0.95rem;
     font-weight: 700;
     padding: 0.7rem 0.5rem;
@@ -523,10 +610,29 @@
     box-shadow: 0 3px 0 var(--ip-brown2);
     letter-spacing: 0.05em;
 }
-.ip-mc-btn:hover  { background: var(--ip-gold2); border-color: var(--ip-gold); transform: translateY(-1px); box-shadow: 0 4px 0 var(--ip-brown); }
-.ip-mc-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ip-brown2); }
-.ip-mc-btn.correct { background: #d4edda; border-color: var(--ip-green); color: var(--ip-green); box-shadow: none; pointer-events: none; }
-.ip-mc-btn.wrong   { background: #f8d7da; border-color: var(--ip-red);   color: var(--ip-red);   box-shadow: none; }
+.ip-mc-btn:hover {
+    background: var(--ip-gold2);
+    border-color: var(--ip-gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 var(--ip-brown);
+}
+.ip-mc-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--ip-brown2);
+}
+.ip-mc-btn.correct {
+    background: #d4edda;
+    border-color: var(--ip-green);
+    color: var(--ip-green);
+    box-shadow: none;
+    pointer-events: none;
+}
+.ip-mc-btn.wrong {
+    background: #f8d7da;
+    border-color: var(--ip-red);
+    color: var(--ip-red);
+    box-shadow: none;
+}
 
 /* Type address input */
 .ip-type-input-wrap {
@@ -535,7 +641,7 @@
     align-items: center;
 }
 .ip-addr-input {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 1.4rem;
     font-weight: 700;
     width: 100px;
@@ -556,7 +662,7 @@
 }
 
 .ip-btn-check {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 0.85rem;
     font-weight: 700;
     padding: 0.6rem 1.5rem;
@@ -569,7 +675,9 @@
     box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
 }
-.ip-btn-check:hover { background: var(--ip-brown2); }
+.ip-btn-check:hover {
+    background: var(--ip-brown2);
+}
 
 /* Row/Col buttons */
 .ip-rowcol-options {
@@ -579,7 +687,7 @@
     justify-content: center;
 }
 .ip-rowcol-btn {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 1rem;
     font-weight: 700;
     padding: 0.8rem 2rem;
@@ -590,11 +698,31 @@
     box-shadow: 0 3px 0 var(--ip-brown2);
     letter-spacing: 0.08em;
 }
-.ip-rowcol-btn.zeile  { background: #fef3c7; color: #92400e; }
-.ip-rowcol-btn.spalte { background: #dbeafe; color: #1e40af; }
-.ip-rowcol-btn:hover  { transform: translateY(-2px); box-shadow: 0 5px 0 var(--ip-brown2); }
-.ip-rowcol-btn.correct { background: #d4edda; border-color: var(--ip-green); color: var(--ip-green); box-shadow: none; pointer-events: none; }
-.ip-rowcol-btn.wrong   { background: #f8d7da; border-color: var(--ip-red);   color: var(--ip-red);   box-shadow: none; }
+.ip-rowcol-btn.zeile {
+    background: #fef3c7;
+    color: #92400e;
+}
+.ip-rowcol-btn.spalte {
+    background: #dbeafe;
+    color: #1e40af;
+}
+.ip-rowcol-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 var(--ip-brown2);
+}
+.ip-rowcol-btn.correct {
+    background: #d4edda;
+    border-color: var(--ip-green);
+    color: var(--ip-green);
+    box-shadow: none;
+    pointer-events: none;
+}
+.ip-rowcol-btn.wrong {
+    background: #f8d7da;
+    border-color: var(--ip-red);
+    color: var(--ip-red);
+    box-shadow: none;
+}
 
 /* Feedback bar */
 .ip-feedback-bar {
@@ -604,8 +732,12 @@
     font-weight: 600;
     padding: 0.25rem;
 }
-.ip-feedback-bar.ok  { color: var(--ip-green); }
-.ip-feedback-bar.err { color: var(--ip-red); }
+.ip-feedback-bar.ok {
+    color: var(--ip-green);
+}
+.ip-feedback-bar.err {
+    color: var(--ip-red);
+}
 
 /* ══════════════════════════════
    SUCCESS OVERLAY
@@ -618,15 +750,17 @@
     z-index: 500;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1rem;
 }
-.ip-success-overlay.visible { display: flex; }
+.ip-success-overlay.visible {
+    display: flex;
+}
 
 .ip-success-scroll {
     background: var(--ip-parchment);
     border: 4px solid var(--ip-brown2);
     border-radius: 4px;
-    padding: 2.5rem;
+    padding: 1.5rem 2rem;
     max-width: 440px;
     width: 100%;
     text-align: center;
@@ -636,7 +770,7 @@
 }
 .ip-success-scroll::before,
 .ip-success-scroll::after {
-    content: '';
+    content: "";
     position: absolute;
     left: -4px;
     right: -4px;
@@ -644,34 +778,44 @@
     background: var(--ip-brown2);
     border-radius: 4px;
 }
-.ip-success-scroll::before { top: -4px; }
-.ip-success-scroll::after  { bottom: -4px; }
+.ip-success-scroll::before {
+    top: -4px;
+}
+.ip-success-scroll::after {
+    bottom: -4px;
+}
 
 @keyframes ip-scroll-pop {
-    from { transform: scale(0.6) rotate(-3deg); opacity: 0; }
-    to   { transform: scale(1) rotate(0deg);    opacity: 1; }
+    from {
+        transform: scale(0.6) rotate(-3deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
 }
 
 .ip-success-icon {
-    font-size: 3rem;
-    margin-bottom: 0.75rem;
+    font-size: 2.2rem;
+    margin-bottom: 0.4rem;
 }
 .ip-success-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
+    font-family: "Cinzel", serif;
+    font-size: 1.2rem;
     font-weight: 900;
     color: var(--ip-gold);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.4rem;
     text-shadow: 1px 1px 0 var(--ip-brown);
 }
 .ip-success-msg {
-    font-size: 0.95rem;
-    line-height: 1.7;
+    font-size: 0.88rem;
+    line-height: 1.55;
     color: var(--ip-ink);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 .ip-btn-next {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 0.9rem;
     font-weight: 700;
     padding: 0.8rem 2.5rem;
@@ -684,8 +828,14 @@
     transition: all 0.15s;
     text-transform: uppercase;
 }
-.ip-btn-next:hover  { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ip-brown); }
-.ip-btn-next:active { transform: translateY(2px);  box-shadow: 0 2px 0 var(--ip-brown); }
+.ip-btn-next:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--ip-brown);
+}
+.ip-btn-next:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--ip-brown);
+}
 
 /* ══════════════════════════════
    FINALE SCREEN
@@ -696,52 +846,58 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1rem 2rem;
     position: relative;
     z-index: 1;
 }
 
 .ip-treasure-chest {
-    font-size: 5rem;
+    font-size: 3.5rem;
     animation: ip-shake-chest 0.5s ease infinite alternate;
 }
 @keyframes ip-shake-chest {
-    from { transform: rotate(-5deg) scale(1); }
-    to   { transform: rotate(5deg)  scale(1.05); }
+    from {
+        transform: rotate(-5deg) scale(1);
+    }
+    to {
+        transform: rotate(5deg) scale(1.05);
+    }
 }
 
 .ip-finale-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-family: "Cinzel", serif;
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
     font-weight: 900;
     color: var(--ip-gold2);
-    text-shadow: 3px 3px 0 var(--ip-brown), 0 0 50px rgba(240, 180, 41, 0.5);
+    text-shadow:
+        3px 3px 0 var(--ip-brown),
+        0 0 50px rgba(240, 180, 41, 0.5);
     text-align: center;
-    margin: 1rem 0 0.5rem;
+    margin: 0.5rem 0 0.25rem;
 }
 .ip-finale-sub {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
     color: var(--ip-sand2);
     letter-spacing: 0.25em;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     text-transform: uppercase;
 }
 
 .ip-finale-scroll {
     background: var(--ip-parchment);
     border: 3px solid var(--ip-brown2);
-    padding: 2rem 2.5rem;
+    padding: 1.25rem 2rem;
     max-width: 480px;
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     box-shadow: 0 8px 32px var(--ip-shadow);
     position: relative;
 }
 .ip-finale-scroll::before,
 .ip-finale-scroll::after {
-    content: '';
+    content: "";
     position: absolute;
     left: -3px;
     right: -3px;
@@ -749,40 +905,48 @@
     background: var(--ip-brown2);
     border-radius: 3px;
 }
-.ip-finale-scroll::before { top: -3px; }
-.ip-finale-scroll::after  { bottom: -3px; }
+.ip-finale-scroll::before {
+    top: -3px;
+}
+.ip-finale-scroll::after {
+    bottom: -3px;
+}
 
 .ip-finale-item {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 0;
+    gap: 0.6rem;
+    padding: 0.3rem 0;
     border-bottom: 1px dashed rgba(107, 61, 30, 0.2);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
 }
-.ip-finale-item:last-child { border-bottom: none; }
-.ip-finale-item .loot    { font-size: 1.3rem; }
+.ip-finale-item:last-child {
+    border-bottom: none;
+}
+.ip-finale-item .loot {
+    font-size: 1.1rem;
+}
 .ip-finale-item .concept {
     color: var(--ip-brown);
     font-weight: 600;
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 0.85rem;
 }
 
 .ip-finale-score {
-    font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
+    font-family: "Cinzel", serif;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--ip-gold);
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .ip-btn-restart {
-    font-family: 'Cinzel', serif;
-    font-size: 0.95rem;
+    font-family: "Cinzel", serif;
+    font-size: 0.9rem;
     font-weight: 700;
-    padding: 0.9rem 2.5rem;
+    padding: 0.65rem 2rem;
     background: transparent;
     border: 2px solid var(--ip-gold2);
     color: var(--ip-gold2);
@@ -791,7 +955,10 @@
     transition: all 0.2s;
     text-transform: uppercase;
 }
-.ip-btn-restart:hover { background: var(--ip-gold2); color: var(--ip-ink); }
+.ip-btn-restart:hover {
+    background: var(--ip-gold2);
+    color: var(--ip-ink);
+}
 
 /* ══════════════════════════════
    MEDALLION
@@ -800,33 +967,48 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 1.5rem 0 0.5rem;
+    margin: 0.75rem 0 0.25rem;
     cursor: default;
 }
 
 .ip-medallion-svg {
-    filter:
-        drop-shadow(0 6px 24px rgba(200, 150, 10, 0.6))
+    filter: drop-shadow(0 6px 24px rgba(200, 150, 10, 0.6))
         drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
-    animation: ip-medallion-appear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    animation: ip-medallion-appear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+        both;
     animation-delay: 0.4s;
     opacity: 0;
 }
 @keyframes ip-medallion-appear {
-    from { transform: scale(0.3) rotate(-20deg); opacity: 0; }
-    to   { transform: scale(1)   rotate(0deg);   opacity: 1; }
+    from {
+        transform: scale(0.3) rotate(-20deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
 }
 .ip-medallion-svg:hover {
     animation: ip-medallion-spin 1s ease;
 }
 @keyframes ip-medallion-spin {
-    0%   { transform: rotateY(0deg);   filter: drop-shadow(0 6px 24px rgba(200, 150, 10, 0.6)); }
-    50%  { transform: rotateY(90deg) scale(0.9); filter: drop-shadow(0 6px 40px rgba(240, 180, 41, 1)); }
-    100% { transform: rotateY(0deg);   filter: drop-shadow(0 6px 24px rgba(200, 150, 10, 0.6)); }
+    0% {
+        transform: rotateY(0deg);
+        filter: drop-shadow(0 6px 24px rgba(200, 150, 10, 0.6));
+    }
+    50% {
+        transform: rotateY(90deg) scale(0.9);
+        filter: drop-shadow(0 6px 40px rgba(240, 180, 41, 1));
+    }
+    100% {
+        transform: rotateY(0deg);
+        filter: drop-shadow(0 6px 24px rgba(200, 150, 10, 0.6));
+    }
 }
 
 .ip-medallion-label {
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-size: 0.7rem;
     letter-spacing: 0.25em;
     color: var(--ip-gold);
@@ -837,7 +1019,9 @@
     animation-delay: 1.2s;
 }
 @keyframes ip-fade-in-label {
-    to { opacity: 1; }
+    to {
+        opacity: 1;
+    }
 }
 
 /* ══════════════════════════════
@@ -850,6 +1034,12 @@
     font-size: 1.5rem;
 }
 @keyframes ip-coin-fly {
-    0%   { transform: translate(0, 0) rotate(0deg) scale(1);   opacity: 1; }
-    100% { transform: translate(var(--tx), var(--ty)) rotate(720deg) scale(0); opacity: 0; }
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) rotate(720deg) scale(0);
+        opacity: 0;
+    }
 }
