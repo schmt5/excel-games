@@ -1,0 +1,649 @@
+:root {
+    --fer-green: #ff3c3c;
+    --fer-green-dim: #cc2222;
+    --fer-green-dark: #330a0a;
+    --fer-bg: #0c0808;
+    --fer-panel: #120a0a;
+    --fer-border: #3a1212;
+    --fer-red: #ff6644;
+    --fer-amber: #ffaa00;
+    --fer-text: #e6c8c8;
+    --fer-cell-bg: #180f0f;
+    --fer-cell-active: #2a0d0d;
+    --fer-cell-border: #3a1e1e;
+}
+
+/* ── BASE ── */
+.fer-root {
+    background: var(--fer-bg);
+    color: var(--fer-text);
+    font-family: "Share Tech Mono", monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Scanline overlay */
+.fer-root::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 60, 60, 0.015) 2px,
+        rgba(255, 60, 60, 0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes fer-flicker {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    92% {
+        opacity: 1;
+    }
+    93% {
+        opacity: 0.95;
+    }
+    94% {
+        opacity: 1;
+    }
+}
+.fer-root {
+    animation: fer-flicker 8s infinite;
+}
+
+/* ── PARTICLE CANVAS ── */
+.fer-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 400;
+}
+
+/* ══════════════════════════════
+   INTRO SCREEN
+══════════════════════════════ */
+.fer-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+}
+
+.fer-intro-logo {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 900;
+    color: var(--fer-green);
+    text-shadow:
+        0 0 30px rgba(255, 60, 60, 0.5),
+        0 0 60px rgba(255, 60, 60, 0.2);
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.fer-intro-sub {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(0.7rem, 2vw, 1rem);
+    color: var(--fer-green-dim);
+    letter-spacing: 0.3em;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+}
+
+.fer-story-box {
+    max-width: 580px;
+    border: 1px solid var(--fer-border);
+    background: var(--fer-panel);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 0.9rem;
+    position: relative;
+}
+.fer-story-box::before {
+    content: "// MISSION BRIEFING";
+    position: absolute;
+    top: -0.7em;
+    left: 1rem;
+    background: var(--fer-panel);
+    padding: 0 0.5rem;
+    color: var(--fer-green);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+}
+.fer-story-box p {
+    margin-bottom: 0.8rem;
+}
+.fer-story-box p:last-child {
+    margin-bottom: 0;
+}
+.fer-highlight {
+    color: var(--fer-green);
+    font-weight: bold;
+}
+
+.fer-rooms-preview {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.fer-room-chip {
+    border: 1px solid var(--fer-border);
+    padding: 0.4rem 0.9rem;
+    font-size: 0.75rem;
+    color: #555;
+    letter-spacing: 0.1em;
+}
+.fer-room-chip.unlocked {
+    color: var(--fer-green-dim);
+    border-color: var(--fer-green-dark);
+}
+.fer-room-chip span {
+    display: block;
+    font-size: 0.6rem;
+    color: #444;
+    margin-top: 0.1rem;
+}
+
+.fer-btn-start {
+    font-family: "Orbitron", sans-serif;
+    background: transparent;
+    border: 2px solid var(--fer-green);
+    color: var(--fer-green);
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+.fer-btn-start::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--fer-green);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: -1;
+}
+.fer-btn-start:hover {
+    color: var(--fer-bg);
+}
+.fer-btn-start:hover::before {
+    transform: translateX(0);
+}
+
+/* ══════════════════════════════
+   GAME SCREEN
+══════════════════════════════ */
+.fer-game {
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.fer-game-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--fer-border);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.fer-room-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+    color: var(--fer-green);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.fer-progress-dots {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.fer-dot {
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--fer-border);
+    border-radius: 50%;
+    transition: all 0.4s;
+}
+.fer-dot.done {
+    background: var(--fer-green);
+    border-color: var(--fer-green);
+    box-shadow: 0 0 8px var(--fer-green);
+}
+.fer-dot.current {
+    border-color: var(--fer-amber);
+    animation: fer-pulse-dot 1.5s infinite;
+}
+@keyframes fer-pulse-dot {
+    0%,
+    100% {
+        box-shadow: 0 0 4px var(--fer-amber);
+        border-color: var(--fer-amber);
+    }
+    50% {
+        box-shadow: 0 0 12px var(--fer-amber);
+    }
+}
+
+.fer-hints-btn {
+    font-size: 0.8rem;
+    color: var(--fer-amber);
+    cursor: pointer;
+    border: 1px solid var(--fer-amber);
+    padding: 0.3rem 0.7rem;
+    transition: all 0.2s;
+    font-family: "Share Tech Mono", monospace;
+    background: transparent;
+}
+.fer-hints-btn:hover {
+    background: rgba(255, 170, 0, 0.1);
+}
+.fer-hints-btn.exhausted {
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* Room container */
+.fer-room-container {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* Story panel */
+.fer-story-panel {
+    border: 1px solid var(--fer-border);
+    background: var(--fer-panel);
+    padding: 1.25rem 1.5rem;
+    position: relative;
+    font-size: 0.875rem;
+    line-height: 1.8;
+}
+.fer-story-panel::before {
+    content: "// SITUATION";
+    position: absolute;
+    top: -0.65em;
+    left: 1rem;
+    background: var(--fer-panel);
+    padding: 0 0.5rem;
+    color: var(--fer-green-dim);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+}
+
+/* Spreadsheet wrapper */
+.fer-spreadsheet-wrapper {
+    border: 1px solid var(--fer-border);
+    background: var(--fer-panel);
+    padding: 1.25rem;
+    position: relative;
+    overflow-x: auto;
+}
+.fer-spreadsheet-wrapper::before {
+    content: "// SPREADSHEET";
+    position: absolute;
+    top: -0.65em;
+    left: 1rem;
+    background: var(--fer-panel);
+    padding: 0 0.5rem;
+    color: var(--fer-green-dim);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+}
+
+/* Formula bar */
+.fer-formula-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    background: var(--fer-cell-bg);
+    border: 1px solid var(--fer-cell-border);
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+}
+.fer-cell-ref {
+    color: var(--fer-amber);
+    min-width: 2.5rem;
+}
+.fer-formula-bar-sep {
+    color: var(--fer-border);
+}
+.fer-formula-display {
+    color: var(--fer-green);
+    flex: 1;
+    font-size: 0.85rem;
+    min-height: 1.2em;
+}
+
+/* Sheet table */
+.fer-sheet {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 360px;
+}
+.fer-col-header,
+.fer-row-header {
+    background: #0f1f0f;
+    color: #3a6a3a;
+    font-size: 0.72rem;
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--fer-cell-border);
+    font-weight: normal;
+    user-select: none;
+    min-width: 2rem;
+}
+.fer-cell {
+    border: 1px solid var(--fer-cell-border);
+    padding: 0.3rem 0.6rem;
+    font-size: 0.82rem;
+    min-width: 90px;
+    white-space: nowrap;
+    cursor: default;
+    position: relative;
+    transition: background 0.15s;
+}
+.fer-cell.label {
+    color: var(--fer-text);
+}
+.fer-cell.number {
+    color: #7ec8a0;
+    text-align: right;
+}
+.fer-cell.bold {
+    font-weight: bold;
+    color: var(--fer-green);
+}
+.fer-cell.highlighted {
+    background: rgba(255, 60, 60, 0.06);
+}
+
+/* Input cell */
+.fer-cell.input-cell {
+    background: var(--fer-cell-active);
+    cursor: text;
+    border-color: var(--fer-amber);
+    min-width: 140px;
+}
+.fer-cell.input-cell.correct {
+    border-color: var(--fer-green);
+    background: rgba(255, 60, 60, 0.08);
+}
+.fer-cell.input-cell.wrong {
+    border-color: var(--fer-red);
+    background: rgba(255, 68, 68, 0.08);
+    animation: fer-shake 0.3s;
+}
+@keyframes fer-shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
+}
+
+.fer-cell-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--fer-amber);
+    font-family: "Share Tech Mono", monospace;
+    font-size: 0.82rem;
+    width: 100%;
+    min-width: 120px;
+}
+.fer-cell-input::placeholder {
+    color: #2a4a2a;
+}
+
+/* Task panel */
+.fer-task-panel {
+    border: 1px solid var(--fer-border);
+    background: var(--fer-panel);
+    padding: 1.25rem 1.5rem;
+    position: relative;
+}
+.fer-task-panel::before {
+    content: "// AUFGABE";
+    position: absolute;
+    top: -0.65em;
+    left: 1rem;
+    background: var(--fer-panel);
+    padding: 0 0.5rem;
+    color: var(--fer-amber);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+}
+.fer-task-text {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+.fer-task-text strong {
+    color: var(--fer-green);
+}
+
+.fer-btn-check {
+    font-family: "Orbitron", sans-serif;
+    background: transparent;
+    border: 1px solid var(--fer-green);
+    color: var(--fer-green);
+    padding: 0.6rem 2rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+.fer-btn-check:hover {
+    background: rgba(255, 60, 60, 0.1);
+}
+
+.fer-feedback {
+    margin-top: 0.75rem;
+    font-size: 0.82rem;
+    min-height: 1.5em;
+    line-height: 1.5;
+    transition: all 0.3s;
+}
+.fer-feedback.ok {
+    color: var(--fer-green);
+}
+.fer-feedback.err {
+    color: var(--fer-red);
+}
+
+/* Hint box */
+.fer-hint-box {
+    display: none;
+    border: 1px solid var(--fer-amber);
+    background: rgba(255, 170, 0, 0.05);
+    padding: 1rem 1.25rem;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    margin-top: 0.75rem;
+    color: var(--fer-amber);
+}
+.fer-hint-box.visible {
+    display: block;
+}
+
+/* ══════════════════════════════
+   SUCCESS OVERLAY
+══════════════════════════════ */
+.fer-success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 10, 0, 0.92);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+}
+.fer-success-overlay.visible {
+    display: flex;
+}
+
+@keyframes fer-pop-in {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.fer-success-box {
+    border: 2px solid var(--fer-green);
+    background: var(--fer-panel);
+    padding: 3rem;
+    max-width: 480px;
+    animation: fer-pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 60px rgba(255, 60, 60, 0.2);
+}
+.fer-success-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+.fer-success-title {
+    font-family: "Orbitron", sans-serif;
+    color: var(--fer-green);
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 20px rgba(255, 60, 60, 0.5);
+}
+.fer-success-msg {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--fer-text);
+    margin-bottom: 2rem;
+}
+.fer-btn-next {
+    font-family: "Orbitron", sans-serif;
+    background: var(--fer-green);
+    border: none;
+    color: var(--fer-bg);
+    padding: 0.9rem 2.5rem;
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+.fer-btn-next:hover {
+    background: #ff6e6e;
+    transform: scale(1.03);
+}
+
+/* ══════════════════════════════
+   FINALE SCREEN
+══════════════════════════════ */
+.fer-finale {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+}
+
+.fer-finale-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(2rem, 7vw, 5rem);
+    font-weight: 900;
+    color: var(--fer-green);
+    text-shadow: 0 0 40px rgba(255, 60, 60, 0.6);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    animation: fer-glow-pulse 2s infinite;
+}
+@keyframes fer-glow-pulse {
+    0%,
+    100% {
+        text-shadow: 0 0 30px rgba(255, 60, 60, 0.5);
+    }
+    50% {
+        text-shadow:
+            0 0 60px rgba(255, 60, 60, 0.9),
+            0 0 100px rgba(255, 60, 60, 0.3);
+    }
+}
+.fer-finale-sub {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(0.7rem, 2vw, 1rem);
+    letter-spacing: 0.3em;
+    color: var(--fer-green-dim);
+    margin-bottom: 3rem;
+}
+.fer-finale-summary {
+    border: 1px solid var(--fer-border);
+    background: var(--fer-panel);
+    padding: 2rem 3rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.875rem;
+    line-height: 2;
+}
+.fer-summary-item {
+    color: var(--fer-text);
+}
+.fer-summary-item span {
+    color: var(--fer-green);
+}
+.fer-btn-restart {
+    font-family: "Orbitron", sans-serif;
+    background: transparent;
+    border: 2px solid var(--fer-green);
+    color: var(--fer-green);
+    padding: 0.9rem 2.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+.fer-btn-restart:hover {
+    background: var(--fer-green);
+    color: var(--fer-bg);
+}
