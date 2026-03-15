@@ -350,15 +350,16 @@
 }
 .fer-col-header,
 .fer-row-header {
-    background: #0f1f0f;
-    color: #3a6a3a;
+    background: #1a3a1a;
+    color: #a8d5a8;
     font-size: 0.72rem;
     text-align: center;
     padding: 0.25rem 0.5rem;
     border: 1px solid var(--fer-cell-border);
-    font-weight: normal;
+    font-weight: 600;
     user-select: none;
     min-width: 2rem;
+    letter-spacing: 0.03em;
 }
 .fer-cell {
     border: 1px solid var(--fer-cell-border);
