@@ -10,6 +10,9 @@ export default function Home() {
         <li>
           <a href="/intro-pirates">Käpt'n Zelle – Das Piraten-Abenteuer</a>
         </li>
+        <li>
+          <a href="/formel-baukasten">Formel-Baukasten</a>
+        </li>
       </ul>
     </main>
   );
