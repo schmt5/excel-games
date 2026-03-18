@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import useEmbedResize from "../../useEmbedResize.js";
 import "./FormelEscapeRoom.css";
 
 // ════════════════════════════════════════════
@@ -447,6 +448,8 @@ function Sheet({ room, inputValue, inputState, onInputChange, onKeyDown }) {
 const SCREEN = { INTRO: "intro", GAME: "game", FINALE: "finale" };
 
 export default function FormelEscapeRoom() {
+  // eslint-disable-next-line no-unused-vars
+  const isEmbed = useEmbedResize();
   const canvasRef = useRef(null);
   const { spawnParticles } = useParticles(canvasRef);
 

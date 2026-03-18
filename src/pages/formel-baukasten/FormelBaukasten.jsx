@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import useEmbedResize from "../../useEmbedResize.js";
 import "./FormelBaukasten.css";
 
 /* ═══════════════════════════════════════════════════════════════
@@ -570,6 +571,8 @@ function Fortschritt({ aktuell, total, punkte }) {
    ═══════════════════════════════════════════════════════════════ */
 
 export default function FormelBaukasten() {
+  // eslint-disable-next-line no-unused-vars
+  const isEmbed = useEmbedResize();
   const [levelIdx, setLevelIdx] = useState(0);
   const [slots, setSlots] = useState([]);
   const [usedIndices, setUsedIndices] = useState(new Set());

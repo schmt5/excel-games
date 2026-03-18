@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import useEmbedResize from "../../useEmbedResize.js";
 import "./IntroPirates.css";
 
 // ════════════════════════════════════════════
@@ -662,6 +663,8 @@ const SCREEN = { INTRO: "intro", GAME: "game", FINALE: "finale" };
 //  MAIN COMPONENT
 // ════════════════════════════════════════════
 export default function IntroPirates() {
+  // eslint-disable-next-line no-unused-vars
+  const isEmbed = useEmbedResize();
   const [screen, setScreen] = useState(SCREEN.INTRO);
   const [questIdx, setQuestIdx] = useState(0);
   const [score, setScore] = useState(0);

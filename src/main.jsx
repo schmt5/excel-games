@@ -7,6 +7,11 @@ import FormelEscapeRoom from "./pages/formel-escape-room/FormelEscapeRoom.jsx";
 import IntroPirates from "./pages/intro-pirates/IntroPirates.jsx";
 import FormelBaukasten from "./pages/formel-baukasten/FormelBaukasten.jsx";
 
+// Apply embed-mode class to body as early as possible (before first render)
+if (new URLSearchParams(window.location.search).get("embed") === "1") {
+  document.body.classList.add("embed-mode");
+}
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
