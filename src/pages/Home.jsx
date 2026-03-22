@@ -17,6 +17,11 @@ const GAMES = [
     title: "Formel-Baukasten",
     description: "Baue Excel-Formeln aus Blöcken zusammen.",
   },
+  {
+    slug: "sortieren-filtern",
+    title: "Sortieren & Filtern in Excel",
+    description: "Lerne Sortieren und Filtern erklärt mit Smartphone-Fotos.",
+  },
 ];
 
 const BASE_URL = "https://excel-games.vercel.app";
