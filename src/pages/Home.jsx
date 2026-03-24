@@ -22,6 +22,12 @@ const GAMES = [
     title: "Sortieren & Filtern in Excel",
     description: "Lerne Sortieren und Filtern erklärt mit Smartphone-Fotos.",
   },
+  {
+    slug: "zellenbezuege",
+    title: "Zellenbezüge in Excel",
+    description:
+      "Verstehe relative und absolute Zellenbezüge mit dem $-Zeichen.",
+  },
 ];
 
 const BASE_URL = "https://excel-games.vercel.app";

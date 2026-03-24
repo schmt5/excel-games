@@ -7,6 +7,7 @@ import FormelEscapeRoom from "./pages/formel-escape-room/FormelEscapeRoom.jsx";
 import IntroPirates from "./pages/intro-pirates/IntroPirates.jsx";
 import FormelBaukasten from "./pages/formel-baukasten/FormelBaukasten.jsx";
 import SortierenFiltern from "./pages/sortieren-filtern/SortierenFiltern.jsx";
+import Zellenbezuege from "./pages/zellenbezuege/Zellenbezuege.jsx";
 
 // Apply embed-mode class to body as early as possible (before first render)
 if (new URLSearchParams(window.location.search).get("embed") === "1") {
@@ -22,6 +23,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/intro-pirates" element={<IntroPirates />} />
         <Route path="/formel-baukasten" element={<FormelBaukasten />} />
         <Route path="/sortieren-filtern" element={<SortierenFiltern />} />
+        <Route path="/zellenbezuege" element={<Zellenbezuege />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
