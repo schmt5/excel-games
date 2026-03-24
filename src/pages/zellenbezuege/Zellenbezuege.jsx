@@ -1,4 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
+import botyImg from "../../assets/boty.png";
+import botyChatImg from "../../assets/boty-chat.png";
 import useEmbedResize from "../../useEmbedResize.js";
 import "./Zellenbezuege.css";
 
@@ -71,7 +73,20 @@ const TOTAL = SLIDES.length;
 function Slide0() {
   return (
     <div className="zb-vis-inner zb-vis-title">
-      <span className="zb-big-emoji">🔗</span>
+      <img
+        src={botyImg}
+        alt="Boty"
+        className="zb-big-emoji"
+        style={{
+          width: "360px",
+          height: "360px",
+          objectFit: "contain",
+          borderRadius: "16px",
+          filter:
+            "drop-shadow(0px 12px 16px rgba(0,0,0,0.15)) drop-shadow(0px 4px 6px rgba(0,0,0,0.09))",
+          animation: "zb-boty-float 3.5s ease-in-out infinite",
+        }}
+      />
       <h1>
         Rechnen mit
         <br />
@@ -941,10 +956,35 @@ export default function Zellenbezuege() {
       <div className="zb-main">
         {/* Chat panel */}
         <div className="zb-chat-panel">
-          <div className="zb-chat-label">🤖 &nbsp;Boty</div>
+          <div className="zb-chat-label">
+            <img
+              src={botyChatImg}
+              alt="Boty"
+              style={{
+                width: "18px",
+                height: "18px",
+                objectFit: "cover",
+                borderRadius: "50%",
+                verticalAlign: "middle",
+                marginRight: "6px",
+              }}
+            />
+            Boty
+          </div>
           <div className="zb-chat-area">
             <div className="zb-chat-bubble-wrap">
-              <div className="zb-robot-avatar">🤖</div>
+              <div className="zb-robot-avatar">
+                <img
+                  src={botyChatImg}
+                  alt="Boty"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                  }}
+                />
+              </div>
               <div className="zb-bubble">
                 <div className="zb-bubble-sender">Boty · Excel</div>
                 <div

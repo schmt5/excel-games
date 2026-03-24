@@ -3,23 +3,23 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .zb-root {
-    --primary:    oklch(59.6% 0.145 163.225);
+    --primary: oklch(59.6% 0.145 163.225);
     --primary-lt: oklch(96% 0.035 163.225);
     --primary-md: oklch(88% 0.07 163.225);
     --primary-dk: oklch(38% 0.13 163.225);
-    --bg:         #f4f6f4;
-    --surface:    #ffffff;
-    --border:     oklch(89% 0.025 163.225);
-    --text:       #181e1a;
-    --muted:      #687068;
-    --robot-bg:   oklch(97% 0.022 163.225);
-    --col-b:      #2563eb;
-    --col-b-lt:   #eff6ff;
-    --abs:        #b45309;
-    --abs-lt:     #fffbeb;
-    --result:     oklch(38% 0.13 163.225);
-    --err:        #dc2626;
-    --err-lt:     #fef2f2;
+    --bg: #f4f6f4;
+    --surface: #ffffff;
+    --border: oklch(89% 0.025 163.225);
+    --text: #181e1a;
+    --muted: #687068;
+    --robot-bg: oklch(97% 0.022 163.225);
+    --col-b: #2563eb;
+    --col-b-lt: #eff6ff;
+    --abs: #b45309;
+    --abs-lt: #fffbeb;
+    --result: oklch(38% 0.13 163.225);
+    --err: #dc2626;
+    --err-lt: #fef2f2;
     --err-border: #fecaca;
 
     font-family: "Outfit", sans-serif;
@@ -309,6 +309,19 @@
 /* ════════════════════════════════════════
    VISUAL COMPONENTS
    ════════════════════════════════════════ */
+
+/* Boty float animation */
+@keyframes zb-boty-float {
+    0% {
+        transform: translateY(0px) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.02);
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}
 
 /* Title slide */
 .zb-vis-title {

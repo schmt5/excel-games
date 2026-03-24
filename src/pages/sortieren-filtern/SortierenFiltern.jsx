@@ -1,4 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
+import botyImg from "../../assets/boty.png";
+import botyChatImg from "../../assets/boty-chat.png";
 import useEmbedResize from "../../useEmbedResize.js";
 import "./SortierenFiltern.css";
 
@@ -147,7 +149,20 @@ const TOTAL = SLIDES.length;
 function Slide0() {
   return (
     <div className="sf-vis-inner sf-vis-title">
-      <span className="sf-big-emoji">📱</span>
+      <img
+        src={botyImg}
+        alt="Boty"
+        className="sf-big-emoji"
+        style={{
+          width: "360px",
+          height: "360px",
+          objectFit: "contain",
+          borderRadius: "16px",
+          filter:
+            "drop-shadow(0px 12px 16px rgba(0,0,0,0.15)) drop-shadow(0px 4px 6px rgba(0,0,0,0.09))",
+          animation: "sf-boty-float 3.5s ease-in-out infinite",
+        }}
+      />
       <h1>
         Sortieren &amp; <span>Filtern</span>
         <br />
@@ -692,12 +707,37 @@ export default function SortierenFiltern() {
       <div className="sf-main">
         {/* Chat panel */}
         <div className="sf-chat-panel">
-          <div className="sf-chat-label">🤖 &nbsp;Lehrassistent</div>
+          <div className="sf-chat-label">
+            <img
+              src={botyChatImg}
+              alt="Boty"
+              style={{
+                width: "18px",
+                height: "18px",
+                objectFit: "cover",
+                borderRadius: "50%",
+                verticalAlign: "middle",
+                marginRight: "6px",
+              }}
+            />
+            Boty
+          </div>
           <div className="sf-chat-area">
             <div className="sf-chat-bubble-wrap">
-              <div className="sf-robot-avatar">🤖</div>
+              <div className="sf-robot-avatar">
+                <img
+                  src={botyChatImg}
+                  alt="Boty"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                  }}
+                />
+              </div>
               <div className="sf-bubble">
-                <div className="sf-bubble-sender">Lehrassistent · Excel</div>
+                <div className="sf-bubble-sender">Boty · Excel</div>
                 <div
                   key={current}
                   className="sf-bubble-text"
