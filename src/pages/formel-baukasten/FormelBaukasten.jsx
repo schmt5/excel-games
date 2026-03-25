@@ -151,6 +151,7 @@ const LEVELS = [
       "=",
       "B2",
       "+",
+      "+",
       "B3",
       "B4",
       "C2",
@@ -168,131 +169,6 @@ const LEVELS = [
   },
   {
     id: 6,
-    stufe: "Profi",
-    stufeFarbe: "#f97316",
-    aufgabe: "Berechne die Gesamtkosten aller Einkäufe mit einer Funktion.",
-    tabelle: {
-      headers: ["", "A", "B", "C", "D"],
-      rows: [
-        ["1", "Produkt", "Menge", "Preis", "Kosten"],
-        ["2", "Äpfel", "4", "0.80", "3.20"],
-        ["3", "Bananen", "6", "0.50", "3.00"],
-        ["4", "Brot", "2", "3.20", "6.40"],
-        ["5", "Käse", "1", "5.90", "5.90"],
-      ],
-      highlight: null,
-    },
-    akzeptiert: [
-      ["=", "SUMME", "(", "D2", ":", "D5", ")"],
-      ["=", "SUMME", "(", "D5", ":", "D2", ")"],
-    ],
-    bloecke: [
-      "=",
-      "SUMME",
-      "(",
-      "D2",
-      ":",
-      "D5",
-      ")",
-      "D1",
-      "+",
-      "MITTELWERT",
-      "MAX",
-      "C2",
-      "C5",
-      "*",
-      "B2",
-      "B5",
-    ],
-    hinweis:
-      "SUMME() addiert einen ganzen Bereich – nutze den Doppelpunkt für «von bis»",
-    erklaerung:
-      "=SUMME(D2:D5) addiert alle Kosten von D2 bis D5 (3.20+3.00+6.40+5.90 = 18.50 CHF). Der Doppelpunkt : bedeutet «von bis».",
-  },
-  {
-    id: 7,
-    stufe: "Profi",
-    stufeFarbe: "#f97316",
-    aufgabe: "Was hat ein Produkt im Durchschnitt gekostet?",
-    tabelle: {
-      headers: ["", "A", "B", "C", "D"],
-      rows: [
-        ["1", "Produkt", "Menge", "Preis", "Kosten"],
-        ["2", "Äpfel", "4", "0.80", "3.20"],
-        ["3", "Bananen", "6", "0.50", "3.00"],
-        ["4", "Brot", "2", "3.20", "6.40"],
-        ["5", "Käse", "1", "5.90", "5.90"],
-      ],
-      highlight: null,
-    },
-    akzeptiert: [
-      ["=", "MITTELWERT", "(", "D2", ":", "D5", ")"],
-      ["=", "MITTELWERT", "(", "D5", ":", "D2", ")"],
-    ],
-    bloecke: [
-      "=",
-      "MITTELWERT",
-      "(",
-      "D2",
-      ":",
-      "D5",
-      ")",
-      "SUMME",
-      "C2",
-      "MAX",
-      "MIN",
-      "ANZAHL",
-      "+",
-      "D1",
-      "C5",
-    ],
-    hinweis: "MITTELWERT() berechnet den Durchschnitt eines Bereichs",
-    erklaerung:
-      "=MITTELWERT(D2:D5) berechnet den Durchschnitt aller Kosten: (3.20+3.00+6.40+5.90) / 4 = 4.625 CHF.",
-  },
-  {
-    id: 8,
-    stufe: "Profi",
-    stufeFarbe: "#f97316",
-    aufgabe: "Welches war das teuerste Produkt? Finde die höchsten Kosten.",
-    tabelle: {
-      headers: ["", "A", "B", "C", "D"],
-      rows: [
-        ["1", "Produkt", "Menge", "Preis", "Kosten"],
-        ["2", "Äpfel", "4", "0.80", "3.20"],
-        ["3", "Bananen", "6", "0.50", "3.00"],
-        ["4", "Brot", "2", "3.20", "6.40"],
-        ["5", "Käse", "1", "5.90", "5.90"],
-      ],
-      highlight: null,
-    },
-    akzeptiert: [
-      ["=", "MAX", "(", "D2", ":", "D5", ")"],
-      ["=", "MAX", "(", "D5", ":", "D2", ")"],
-    ],
-    bloecke: [
-      "=",
-      "MAX",
-      "(",
-      "D2",
-      ":",
-      "D5",
-      ")",
-      "MIN",
-      "SUMME",
-      "C5",
-      "MITTELWERT",
-      "ANZAHL",
-      "+",
-      "D1",
-      "B2",
-    ],
-    hinweis: "MAX() gibt den grössten Wert in einem Bereich zurück",
-    erklaerung:
-      "=MAX(D2:D5) findet den höchsten Wert in der Spalte Kosten: 6.40 CHF (das Brot).",
-  },
-  {
-    id: 9,
     stufe: "Experte",
     stufeFarbe: "#ef4444",
     aufgabe:
@@ -319,10 +195,6 @@ const LEVELS = [
       "D3",
       "D4",
       "D5",
-      "SUMME",
-      "(",
-      ")",
-      ":",
       "-",
       "*",
       "C2",
@@ -335,7 +207,7 @@ const LEVELS = [
       "=D2+D3 addiert die Kosten der Äpfel (3.20) und Bananen (3.00) = 6.20 CHF. Da es nur zwei Obst-Zeilen sind, reicht eine einfache Addition.",
   },
   {
-    id: 10,
+    id: 7,
     stufe: "Experte",
     stufeFarbe: "#ef4444",
     aufgabe:
@@ -734,6 +606,10 @@ export default function FormelBaukasten() {
             <div className="fb-end-bar">
               <div className="fb-end-bar-fill" style={{ width: `${pct}%` }} />
             </div>
+          </div>
+          <div className="fb-end-code-card">
+            <p className="fb-end-code-label">Dein Code</p>
+            <span className="fb-end-code-value">578-GFD</span>
           </div>
           <button
             className="fb-btn fb-btn-primary fb-btn-large"
