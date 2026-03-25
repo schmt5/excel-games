@@ -592,31 +592,35 @@ export default function FormelBaukasten() {
 
     return (
       <div className="fb-app">
-        <div className="fb-end-screen">
-          <div className="fb-end-emoji">{emoji}</div>
-          <h1 className="fb-end-title">{bewertung}</h1>
-          <p className="fb-end-subtitle">
-            Du hast alle {LEVELS.length} Aufgaben gelöst!
-          </p>
-          <div className="fb-end-score">
-            <span className="fb-end-score-num">{punkte}</span>
-            <span className="fb-end-score-label">von {maxPunkte} Punkten</span>
-          </div>
-          <div className="fb-end-bar-wrapper">
-            <div className="fb-end-bar">
-              <div className="fb-end-bar-fill" style={{ width: `${pct}%` }} />
+        <div className="fb-app-inner">
+          <div className="fb-end-screen">
+            <div className="fb-end-emoji">{emoji}</div>
+            <h1 className="fb-end-title">{bewertung}</h1>
+            <p className="fb-end-subtitle">
+              Du hast alle {LEVELS.length} Aufgaben gelöst!
+            </p>
+            <div className="fb-end-score">
+              <span className="fb-end-score-num">{punkte}</span>
+              <span className="fb-end-score-label">
+                von {maxPunkte} Punkten
+              </span>
             </div>
+            <div className="fb-end-bar-wrapper">
+              <div className="fb-end-bar">
+                <div className="fb-end-bar-fill" style={{ width: `${pct}%` }} />
+              </div>
+            </div>
+            <div className="fb-end-code-card">
+              <p className="fb-end-code-label">Dein Code</p>
+              <span className="fb-end-code-value">578-GFD</span>
+            </div>
+            <button
+              className="fb-btn fb-btn-primary fb-btn-large"
+              onClick={neustart}
+            >
+              Nochmal spielen
+            </button>
           </div>
-          <div className="fb-end-code-card">
-            <p className="fb-end-code-label">Dein Code</p>
-            <span className="fb-end-code-value">578-GFD</span>
-          </div>
-          <button
-            className="fb-btn fb-btn-primary fb-btn-large"
-            onClick={neustart}
-          >
-            Nochmal spielen
-          </button>
         </div>
       </div>
     );
@@ -624,139 +628,141 @@ export default function FormelBaukasten() {
 
   return (
     <div className="fb-app">
-      <header className="fb-header">
-        <div className="fb-header-left">
-          <div className="fb-logo">
-            <span className="fb-logo-icon">fx</span>
-            <span className="fb-logo-text">Formel-Baukasten</span>
-          </div>
-        </div>
-        <div className="fb-header-right">
-          <span
-            className="fb-stufe-badge"
-            style={{ background: level.stufeFarbe }}
-          >
-            {level.stufe}
-          </span>
-        </div>
-      </header>
-
-      <Fortschritt aktuell={levelIdx} total={LEVELS.length} punkte={punkte} />
-
-      <main className="fb-main">
-        {/* Aufgabe */}
-        <div className="fb-aufgabe-card">
-          <div className="fb-aufgabe-header">
-            <span className="fb-aufgabe-nummer">Aufgabe {level.id}</span>
-          </div>
-          <p className="fb-aufgabe-text">{level.aufgabe}</p>
-          {level.tabelle && <MiniTabelle tabelle={level.tabelle} />}
-        </div>
-
-        {/* Formelleiste */}
-        <div
-          className={`fb-formel-area ${feedback === "falsch" ? "fb-shake" : ""}`}
-          key={`shake-${shakeTrigger}`}
-        >
-          <FormelLeiste
-            slots={slots}
-            onDrop={handleDrop}
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onRemoveSlot={handleRemoveSlot}
-            maxSlots={Math.max(...level.akzeptiert.map((a) => a.length))}
-            isDragOver={isDragOver}
-          />
-        </div>
-
-        {/* Feedback */}
-        {feedback === "richtig" && (
-          <div className="fb-feedback fb-feedback-richtig">
-            <span className="fb-feedback-icon">✓</span> Richtig!
-          </div>
-        )}
-        {feedback === "falsch" && (
-          <div className="fb-feedback fb-feedback-falsch">
-            <span className="fb-feedback-icon">✗</span> Noch nicht ganz –
-            versuch&apos;s nochmal!
-          </div>
-        )}
-
-        {/* Erklärung */}
-        {zeigeErklaerung && (
-          <div className="fb-erklaerung-card">
-            <div className="fb-erklaerung-label">💡 Erklärung</div>
-            <p>{level.erklaerung}</p>
-          </div>
-        )}
-
-        {/* Blöcke */}
-        {!zeigeErklaerung && (
-          <div className="fb-bloecke-area">
-            <div className="fb-bloecke-label">
-              Verfügbare Bausteine – wähle die richtigen!
-            </div>
-            <div className="fb-bloecke-grid">
-              {shuffledBloecke.map((b, i) => (
-                <FormelBlock
-                  key={`${levelIdx}-${i}`}
-                  text={b}
-                  onDragStart={handleDragStart(i)}
-                  onClick={handleBlockClick(i)}
-                  isDragging={false}
-                  isDisabled={usedIndices.has(i)}
-                />
-              ))}
+      <div className="fb-app-inner">
+        <header className="fb-header">
+          <div className="fb-header-left">
+            <div className="fb-logo">
+              <span className="fb-logo-icon">fx</span>
+              <span className="fb-logo-text">Formel-Baukasten</span>
             </div>
           </div>
-        )}
-
-        {/* Hinweis */}
-        {zeigeHinweis && !zeigeErklaerung && (
-          <div className="fb-hinweis-card">
-            <span className="fb-hinweis-icon">💡</span> {level.hinweis}
-          </div>
-        )}
-
-        {/* Buttons */}
-        <div className="fb-button-row">
-          {!feedback && !zeigeErklaerung && (
-            <>
-              {!zeigeHinweis && (
-                <button
-                  className="fb-btn fb-btn-ghost"
-                  onClick={() => setZeigeHinweis(true)}
-                >
-                  Hinweis anzeigen
-                </button>
-              )}
-              <button
-                className="fb-btn fb-btn-secondary"
-                onClick={zuruecksetzen}
-              >
-                Zurücksetzen
-              </button>
-              <button
-                className="fb-btn fb-btn-primary"
-                onClick={pruefen}
-                disabled={slots.length === 0}
-              >
-                Prüfen
-              </button>
-            </>
-          )}
-          {zeigeErklaerung && (
-            <button
-              className="fb-btn fb-btn-primary fb-btn-large"
-              onClick={naechsteAufgabe}
+          <div className="fb-header-right">
+            <span
+              className="fb-stufe-badge"
+              style={{ background: level.stufeFarbe }}
             >
-              {levelIdx + 1 >= LEVELS.length
-                ? "Ergebnis anzeigen"
-                : "Nächste Aufgabe →"}
-            </button>
+              {level.stufe}
+            </span>
+          </div>
+        </header>
+
+        <Fortschritt aktuell={levelIdx} total={LEVELS.length} punkte={punkte} />
+
+        <main className="fb-main">
+          {/* Aufgabe */}
+          <div className="fb-aufgabe-card">
+            <div className="fb-aufgabe-header">
+              <span className="fb-aufgabe-nummer">Aufgabe {level.id}</span>
+            </div>
+            <p className="fb-aufgabe-text">{level.aufgabe}</p>
+            {level.tabelle && <MiniTabelle tabelle={level.tabelle} />}
+          </div>
+
+          {/* Formelleiste */}
+          <div
+            className={`fb-formel-area ${feedback === "falsch" ? "fb-shake" : ""}`}
+            key={`shake-${shakeTrigger}`}
+          >
+            <FormelLeiste
+              slots={slots}
+              onDrop={handleDrop}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onRemoveSlot={handleRemoveSlot}
+              maxSlots={Math.max(...level.akzeptiert.map((a) => a.length))}
+              isDragOver={isDragOver}
+            />
+          </div>
+
+          {/* Feedback */}
+          {feedback === "richtig" && (
+            <div className="fb-feedback fb-feedback-richtig">
+              <span className="fb-feedback-icon">✓</span> Richtig!
+            </div>
           )}
-        </div>
-      </main>
+          {feedback === "falsch" && (
+            <div className="fb-feedback fb-feedback-falsch">
+              <span className="fb-feedback-icon">✗</span> Noch nicht ganz –
+              versuch&apos;s nochmal!
+            </div>
+          )}
+
+          {/* Erklärung */}
+          {zeigeErklaerung && (
+            <div className="fb-erklaerung-card">
+              <div className="fb-erklaerung-label">💡 Erklärung</div>
+              <p>{level.erklaerung}</p>
+            </div>
+          )}
+
+          {/* Blöcke */}
+          {!zeigeErklaerung && (
+            <div className="fb-bloecke-area">
+              <div className="fb-bloecke-label">
+                Verfügbare Bausteine – wähle die richtigen!
+              </div>
+              <div className="fb-bloecke-grid">
+                {shuffledBloecke.map((b, i) => (
+                  <FormelBlock
+                    key={`${levelIdx}-${i}`}
+                    text={b}
+                    onDragStart={handleDragStart(i)}
+                    onClick={handleBlockClick(i)}
+                    isDragging={false}
+                    isDisabled={usedIndices.has(i)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Hinweis */}
+          {zeigeHinweis && !zeigeErklaerung && (
+            <div className="fb-hinweis-card">
+              <span className="fb-hinweis-icon">💡</span> {level.hinweis}
+            </div>
+          )}
+
+          {/* Buttons */}
+          <div className="fb-button-row">
+            {!feedback && !zeigeErklaerung && (
+              <>
+                {!zeigeHinweis && (
+                  <button
+                    className="fb-btn fb-btn-ghost"
+                    onClick={() => setZeigeHinweis(true)}
+                  >
+                    Hinweis anzeigen
+                  </button>
+                )}
+                <button
+                  className="fb-btn fb-btn-secondary"
+                  onClick={zuruecksetzen}
+                >
+                  Zurücksetzen
+                </button>
+                <button
+                  className="fb-btn fb-btn-primary"
+                  onClick={pruefen}
+                  disabled={slots.length === 0}
+                >
+                  Prüfen
+                </button>
+              </>
+            )}
+            {zeigeErklaerung && (
+              <button
+                className="fb-btn fb-btn-primary fb-btn-large"
+                onClick={naechsteAufgabe}
+              >
+                {levelIdx + 1 >= LEVELS.length
+                  ? "Ergebnis anzeigen"
+                  : "Nächste Aufgabe →"}
+              </button>
+            )}
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
