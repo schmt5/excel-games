@@ -20,6 +20,10 @@
    BASE
 ══════════════════════════════ */
 .ip-root {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--ip-sea);
     background-image:
         radial-gradient(

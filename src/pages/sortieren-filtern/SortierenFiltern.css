@@ -3,6 +3,10 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .sf-root {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     --primary: oklch(59.6% 0.145 163.225);
     --primary-lt: oklch(96% 0.035 163.225);
     --primary-md: oklch(88% 0.07 163.225);

@@ -21,6 +21,9 @@
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Scanline overlay */
