@@ -967,3 +967,193 @@
     color: var(--muted);
     font-style: italic;
 }
+
+/* ════════════════════════════════════════
+   MOBILE RESPONSIVE
+   ════════════════════════════════════════ */
+
+@media (max-width: 700px) {
+    /* Root: allow scrolling, no fixed height */
+    .zb-root {
+        height: auto;
+        min-height: 100dvh;
+        overflow: visible;
+    }
+
+    /* Topbar: tighter, hide brand subtitle */
+    .zb-topbar {
+        padding: 9px 14px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .zb-brand-sub {
+        display: none;
+    }
+
+    .zb-brand-title {
+        font-size: 0.78rem;
+    }
+
+    .zb-progress-wrap {
+        max-width: none;
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .zb-topbar-right {
+        gap: 6px;
+    }
+
+    .zb-slide-counter {
+        font-size: 0.72rem;
+        min-width: 34px;
+    }
+
+    .zb-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    /* Main: stack chat above visual */
+    .zb-main {
+        display: flex;
+        flex-direction: column;
+        overflow: visible;
+        min-height: 0;
+    }
+
+    /* Chat panel: natural height, no scrolling */
+    .zb-chat-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        overflow: visible;
+    }
+
+    .zb-chat-area {
+        flex: none;
+        overflow-y: visible;
+        padding: 16px 14px;
+        justify-content: flex-start;
+    }
+
+    .zb-bubble-text {
+        font-size: 0.88rem;
+        line-height: 1.65;
+    }
+
+    /* Visual panel: natural height, scrollable content */
+    .zb-visual-panel {
+        position: relative;
+        overflow: visible;
+        min-height: 0;
+    }
+
+    .zb-slide {
+        position: relative;
+        inset: auto;
+        opacity: 0;
+        pointer-events: none;
+        padding: 24px 16px;
+        overflow-y: visible;
+        display: none;
+    }
+
+    .zb-slide.active {
+        display: flex;
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .zb-slide > .zb-vis-inner {
+        margin: 0;
+    }
+
+    /* Hide keyboard hint entirely */
+    .zb-bottombar {
+        display: none;
+    }
+
+    /* Title slide */
+    .zb-vis-title h1 {
+        font-size: 1.6rem;
+    }
+
+    .zb-big-emoji {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    /* Excel tables: shrink text */
+    .zb-xl-table {
+        font-size: 0.78rem;
+    }
+
+    .zb-xl-table th,
+    .zb-xl-table td {
+        padding: 6px 8px;
+        font-size: 0.74rem;
+    }
+
+    .zb-xl-table td.zb-formula-cell,
+    .zb-xl-table td.zb-formula-abs,
+    .zb-xl-table td.zb-err-cell {
+        font-size: 0.72rem;
+    }
+
+    .zb-xl-bar {
+        padding: 5px 10px;
+    }
+
+    .zb-xl-bar .zb-fd {
+        font-size: 0.76rem;
+    }
+
+    /* Formula box */
+    .zb-formula-big {
+        font-size: 1.3rem;
+    }
+
+    .zb-formula-box {
+        padding: 16px 16px;
+    }
+
+    /* Compare grid: stay side-by-side but smaller */
+    .zb-compare-grid {
+        gap: 12px;
+    }
+
+    .zb-compare-box {
+        padding: 16px 12px;
+    }
+
+    /* End card */
+    .zb-end-card {
+        padding: 28px 20px;
+    }
+
+    /* Scenario card */
+    .zb-scenario-card {
+        padding: 20px 18px;
+    }
+
+    .zb-scenario-card .zb-sc-body {
+        font-size: 0.83rem;
+    }
+
+    /* Quiz: stack columns vertically */
+    .zb-quiz-slide {
+        flex-direction: column;
+        padding: 20px 16px;
+        gap: 20px;
+    }
+
+    .zb-quiz-col {
+        width: 100%;
+    }
+
+    .zb-quiz-option {
+        font-size: 0.85rem;
+        padding: 10px 14px;
+    }
+}
