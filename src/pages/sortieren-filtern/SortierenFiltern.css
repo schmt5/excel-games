@@ -968,3 +968,211 @@
     align-items: center;
     gap: 6px;
 }
+
+/* ════════════════════════════════════════
+   MOBILE RESPONSIVE
+   ════════════════════════════════════════ */
+
+@media (max-width: 700px) {
+    /* Root: allow scrolling, no fixed height */
+    .sf-root {
+        height: auto;
+        min-height: 100dvh;
+        overflow: visible;
+    }
+
+    /* Topbar: tighter, hide brand subtitle */
+    .sf-topbar {
+        padding: 9px 14px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .sf-brand-sub {
+        display: none;
+    }
+
+    .sf-brand-title {
+        font-size: 0.78rem;
+    }
+
+    .sf-progress-wrap {
+        max-width: none;
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .sf-topbar-right {
+        gap: 6px;
+    }
+
+    .sf-slide-counter {
+        font-size: 0.72rem;
+        min-width: 34px;
+    }
+
+    .sf-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    /* Main: stack chat above visual */
+    .sf-main {
+        display: flex;
+        flex-direction: column;
+        overflow: visible;
+        min-height: 0;
+    }
+
+    /* Chat panel: natural height, no scrolling */
+    .sf-chat-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        overflow: visible;
+    }
+
+    .sf-chat-area {
+        flex: none;
+        overflow-y: visible;
+        padding: 16px 14px;
+        justify-content: flex-start;
+    }
+
+    .sf-bubble-text {
+        font-size: 0.88rem;
+        line-height: 1.65;
+    }
+
+    /* Visual panel: natural height */
+    .sf-visual-panel {
+        position: relative;
+        overflow: visible;
+        min-height: 0;
+    }
+
+    .sf-slide {
+        position: relative;
+        inset: auto;
+        opacity: 0;
+        pointer-events: none;
+        padding: 24px 16px;
+        overflow-y: visible;
+        display: none;
+    }
+
+    .sf-slide.active {
+        display: flex;
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .sf-slide > .sf-vis-inner {
+        margin: 0;
+    }
+
+    /* Hide keyboard hint entirely */
+    .sf-bottombar {
+        display: none;
+    }
+
+    /* Title slide */
+    .sf-vis-title h1 {
+        font-size: 1.6rem;
+    }
+
+    .sf-big-emoji {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    /* Keyword card */
+    .sf-keyword-big {
+        font-size: 2.4rem;
+    }
+
+    .sf-keyword-sub {
+        font-size: 0.88rem;
+    }
+
+    /* Phone widget */
+    .sf-phone {
+        width: 148px;
+    }
+
+    /* Sort rows */
+    .sf-sort-row {
+        padding: 8px 12px;
+        font-size: 0.82rem;
+    }
+
+    /* Filter chips */
+    .sf-filter-chip {
+        padding: 8px 12px;
+        font-size: 0.82rem;
+    }
+
+    /* Compare grid: stay side-by-side but smaller */
+    .sf-compare-grid {
+        gap: 12px;
+    }
+
+    .sf-compare-box {
+        padding: 16px 12px;
+    }
+
+    /* Fun card */
+    .sf-fun-card {
+        padding: 24px 18px;
+    }
+
+    .sf-fun-card h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Memory list */
+    .sf-mem-list {
+        max-width: 100%;
+    }
+
+    .sf-mem-row {
+        padding: 10px 12px;
+    }
+
+    /* Finale card */
+    .sf-finale-card {
+        padding: 28px 20px;
+    }
+
+    .sf-finale-title {
+        font-size: 1.4rem;
+    }
+
+    /* Interactive slide: full width, tighter */
+    .sf-interactive-slide {
+        max-width: 100%;
+    }
+
+    .sf-interactive-header {
+        padding: 12px 14px;
+    }
+
+    /* Photo rows: hide date on very small screens, shrink loc tag */
+    .sf-photo-row {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        gap: 8px;
+    }
+
+    .sf-photo-date {
+        display: none;
+    }
+
+    .sf-photo-loc-tag {
+        font-size: 0.65rem;
+        padding: 2px 8px;
+    }
+
+    .sf-photo-title {
+        font-size: 0.82rem;
+    }
+}
