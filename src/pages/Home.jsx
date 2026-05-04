@@ -28,6 +28,12 @@ const GAMES = [
     description:
       "Verstehe relative und absolute Zellenbezüge mit dem $-Zeichen.",
   },
+  {
+    slug: "prozentrechnung",
+    title: "Prozentrechnung in Excel",
+    description:
+      "Lerne, was Prozent bedeutet und wie du damit in Excel rechnest.",
+  },
 ];
 
 const BASE_URL = "https://excel-games.vercel.app";
