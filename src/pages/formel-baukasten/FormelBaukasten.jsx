@@ -165,7 +165,7 @@ const LEVELS = [
     ],
     hinweis: "Addiere alle Mengenzellen aus Spalte B",
     erklaerung:
-      "=B2+B3+B4 addiert die einzelnen Mengen (4+6+2 = 12). Die Reihenfolge spielt bei Addition keine Rolle. Bei vielen Zeilen wird das aber mühsam – dafür gibt es die SUMME-Funktion!",
+      "=B2+B3+B4 addiert die einzelnen Mengen (4+6+2 = 12). Die Reihenfolge spielt bei Addition keine Rolle.",
   },
   {
     id: 6,
@@ -237,7 +237,6 @@ const LEVELS = [
       "D5",
       "D2",
       "D3",
-      "SUMME",
       "(",
       ")",
       ":",
@@ -458,6 +457,7 @@ export default function FormelBaukasten() {
   );
   const [shakeTrigger, setShakeTrigger] = useState(0);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [codeCopied, setCodeCopied] = useState(false);
   const dragIdx = useRef(null);
 
   const level = LEVELS[levelIdx];
@@ -616,9 +616,20 @@ export default function FormelBaukasten() {
             </div>
             <button
               className="fb-btn fb-btn-primary fb-btn-large"
+              onClick={() => {
+                navigator.clipboard.writeText("578-GFD").then(() => {
+                  setCodeCopied(true);
+                  setTimeout(() => setCodeCopied(false), 2000);
+                });
+              }}
+            >
+              {codeCopied ? "✅ Kopiert!" : "📋 Code kopieren"}
+            </button>
+            <button
+              className="fb-btn fb-btn-outline fb-btn-large"
               onClick={neustart}
             >
-              Nochmal spielen
+              ↩ Nochmal spielen
             </button>
           </div>
         </div>

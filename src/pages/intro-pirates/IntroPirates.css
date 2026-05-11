@@ -993,8 +993,13 @@
         opacity: 1;
     }
 }
-.ip-medallion-svg:hover {
+.ip-medallion-svg.appeared {
+    opacity: 1;
+    animation: none;
+}
+.ip-medallion-svg.appeared:hover {
     animation: ip-medallion-spin 1s ease;
+    opacity: 1;
 }
 @keyframes ip-medallion-spin {
     0% {
@@ -1026,6 +1031,37 @@
     to {
         opacity: 1;
     }
+}
+
+.ip-btn-copy-code {
+    margin-top: 0.6rem;
+    padding: 0.5rem 1.2rem;
+    font-family: "Cinzel", serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #3a1a00;
+    background: linear-gradient(135deg, #f0d060, #c8960a);
+    border: 2px solid #7a5500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        transform 0.15s,
+        box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: ip-fade-in-label 0.5s ease forwards;
+    animation-delay: 1.4s;
+}
+.ip-btn-copy-code:hover {
+    background: linear-gradient(135deg, #fff0a0, #e8a820);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(200, 150, 10, 0.5);
+}
+.ip-btn-copy-code:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* ══════════════════════════════

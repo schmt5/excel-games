@@ -42,25 +42,6 @@
     z-index: 1000;
 }
 
-@keyframes fer-flicker {
-    0%,
-    100% {
-        opacity: 1;
-    }
-    92% {
-        opacity: 1;
-    }
-    93% {
-        opacity: 0.95;
-    }
-    94% {
-        opacity: 1;
-    }
-}
-.fer-root {
-    animation: fer-flicker 8s infinite;
-}
-
 /* ── PARTICLE CANVAS ── */
 .fer-canvas {
     position: fixed;
@@ -693,6 +674,26 @@
     letter-spacing: 0.1em;
     margin-top: 0.25rem;
 }
+
+.fer-btn-copy {
+    font-family: "Orbitron", sans-serif;
+    background: var(--fer-green);
+    border: none;
+    color: var(--fer-bg);
+    padding: 0.9rem 2.5rem;
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    margin-top: 2rem;
+}
+.fer-btn-copy:hover {
+    background: #ff6e6e;
+    transform: scale(1.03);
+}
+
 .fer-btn-restart {
     font-family: "Orbitron", sans-serif;
     background: transparent;
@@ -705,8 +706,8 @@
     cursor: pointer;
     transition: all 0.3s;
     text-transform: uppercase;
+    margin-top: 0.75rem;
 }
 .fer-btn-restart:hover {
-    background: var(--fer-green);
-    color: var(--fer-bg);
+    background: rgba(255, 60, 60, 0.1);
 }

@@ -10,7 +10,7 @@ const ROOMS = [
     id: 1,
     title: "ZONE 1 // VORRATSLAGER",
     story: `Das Vorratslager ist verriegelt. Drinnen: Konserven, Wasser, Werkzeug. Draussen: Stöhnen. Das elektronische Schloss verlangt, dass du den <strong>Gesamtvorrat</strong> korrekt berechnest — erst dann öffnet es.`,
-    taskText: `Im Regal stehen <strong>34 Dosen Bohnen</strong> und <strong>21 Dosen Thunfisch</strong>. Berechne den Gesamtbestand in Zelle <strong>B4</strong>. Schreibe eine echte Formel — keine einfache Zahl!`,
+    taskText: `Im Regal stehen <strong>34 Dosen Bohnen</strong> und <strong>21 Dosen Thunfisch</strong>. Berechne den Gesamtbestand in Zelle <strong>B4</strong>. Schreibe eine echte Formel. Verwende Zelladressen - keine einfache Zahl!`,
     inputCell: { ref: "B4" },
     hint: "💡 Addiere die Werte direkt: =34+21 — oder verwende die Zellnamen B2 und B3!",
     validate: (val) => {
@@ -76,7 +76,7 @@ const ROOMS = [
     id: 2,
     title: "ZONE 2 // MEDIZINRAUM",
     story: `Der Medizinraum. Antibiotika, Verbandsmaterial, Schmerzmittel. Jemand aus deiner Gruppe ist verletzt. Die Tür ist zu. Das System zeigt eine halbfertige Tabelle — eine Formel fehlt. Sie wurde aus der Zeile darüber kopiert.`,
-    taskText: `In <strong>E2</strong> steht <strong>=C2*D2</strong> (Stück × Gewicht in g). Diese Formel wurde eine Zeile nach unten kopiert. Was steht dann automatisch in <strong>E3</strong>? Tippe die Formel ein.`,
+    taskText: `In <strong>E2</strong> steht <strong>=C2*D2</strong> (Stück × Gewicht in g). Was würde automatisch in <strong>E3</strong> stehen, wenn man die Formel  von E2 nach unten kopiert? Tippe die Formel ein.`,
     inputCell: { ref: "E3" },
     hint: "💡 Excel passt Zeilennummern beim Kopieren automatisch an. Aus =C2*D2 wird in Zeile 3 → =C?*D?",
     validate: (val) => {
@@ -461,6 +461,7 @@ export default function FormelEscapeRoom() {
   const [hintsUsed, setHintsUsed] = useState(0);
   const [hintVisible, setHintVisible] = useState(false);
   const [successVisible, setSuccessVisible] = useState(false);
+  const [codeCopied, setCodeCopied] = useState(false);
 
   const room = ROOMS[currentRoom];
   const isLastRoom = currentRoom === ROOMS.length - 1;
@@ -708,6 +709,17 @@ export default function FormelEscapeRoom() {
               // Bewahre diesen Code gut auf
             </div>
           </div>
+          <button
+            className="fer-btn-copy"
+            onClick={() => {
+              navigator.clipboard.writeText("563-HPD").then(() => {
+                setCodeCopied(true);
+                setTimeout(() => setCodeCopied(false), 2000);
+              });
+            }}
+          >
+            {codeCopied ? "✅ KOPIERT!" : "📋 CODE KOPIEREN"}
+          </button>
           <button className="fer-btn-restart" onClick={restartGame}>
             ↩ NOCHMALS SPIELEN
           </button>

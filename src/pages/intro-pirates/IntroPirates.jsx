@@ -414,10 +414,22 @@ function ProgressMap({ currentQuestIdx }) {
 //  MEDALLION SVG
 // ════════════════════════════════════════════
 function Medallion() {
+  const [appeared, setAppeared] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const CODE = "X5K-GL7";
+
+  function handleCopy() {
+    navigator.clipboard.writeText(CODE).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
+
   return (
     <div className="ip-medallion-wrap">
       <svg
-        className="ip-medallion-svg"
+        className={`ip-medallion-svg${appeared ? " appeared" : ""}`}
+        onAnimationEnd={() => setAppeared(true)}
         width="220"
         height="220"
         viewBox="0 0 220 220"
@@ -650,6 +662,9 @@ function Medallion() {
       <div className="ip-medallion-label">
         🔑 Das goldene Medaillon — bewahre es gut
       </div>
+      <button className="ip-btn-copy-code" onClick={handleCopy}>
+        {copied ? "✅ Kopiert!" : "📋 Code Kopieren"}
+      </button>
     </div>
   );
 }

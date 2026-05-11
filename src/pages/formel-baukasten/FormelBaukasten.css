@@ -687,6 +687,16 @@
     border-color: var(--fb-text-muted);
 }
 
+.fb-btn-outline {
+    background: transparent;
+    color: var(--fb-accent);
+    border: 2px solid var(--fb-accent);
+}
+
+.fb-btn-outline:hover:not(:disabled) {
+    background: rgba(108, 92, 231, 0.1);
+}
+
 .fb-btn-ghost {
     background: transparent;
     color: var(--fb-text-muted);
