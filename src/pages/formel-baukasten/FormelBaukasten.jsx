@@ -625,8 +625,9 @@ export default function FormelBaukasten() {
             >
               {codeCopied ? "✅ Kopiert!" : "📋 Code kopieren"}
             </button>
+
             <button
-              className="fb-btn fb-btn-outline fb-btn-large"
+              className="fb-btn fb-btn-outline fb-btn-large fb-margin-block"
               onClick={neustart}
             >
               ↩ Nochmal spielen

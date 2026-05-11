@@ -820,6 +820,10 @@
     border: 1.5px solid rgba(108, 92, 231, 0.35);
 }
 
+.fb-margin-block {
+    margin-block: 1rem;
+}
+
 /* ═══ RESPONSIVE ═══ */
 @media (min-width: 900px) {
     .fb-app-inner {

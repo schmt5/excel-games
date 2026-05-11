@@ -997,24 +997,6 @@
     opacity: 1;
     animation: none;
 }
-.ip-medallion-svg.appeared:hover {
-    animation: ip-medallion-spin 1s ease;
-    opacity: 1;
-}
-@keyframes ip-medallion-spin {
-    0% {
-        transform: rotateY(0deg);
-        filter: drop-shadow(0 6px 24px rgba(200, 150, 10, 0.6));
-    }
-    50% {
-        transform: rotateY(90deg) scale(0.9);
-        filter: drop-shadow(0 6px 40px rgba(240, 180, 41, 1));
-    }
-    100% {
-        transform: rotateY(0deg);
-        filter: drop-shadow(0 6px 24px rgba(200, 150, 10, 0.6));
-    }
-}
 
 .ip-medallion-label {
     font-family: "Cinzel", serif;
