@@ -9,6 +9,7 @@ import FormelBaukasten from "./pages/formel-baukasten/FormelBaukasten.jsx";
 import SortierenFiltern from "./pages/sortieren-filtern/SortierenFiltern.jsx";
 import Zellenbezuege from "./pages/zellenbezuege/Zellenbezuege.jsx";
 import Prozentrechnung from "./pages/prozentrechnung/Prozentrechnung.jsx";
+import BitsUndBytes from "./pages/bits-und-bytes/BitsUndBytes.jsx";
 
 // Apply embed-mode class to body as early as possible (before first render)
 if (new URLSearchParams(window.location.search).get("embed") === "1") {
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/sortieren-filtern" element={<SortierenFiltern />} />
         <Route path="/zellenbezuege" element={<Zellenbezuege />} />
         <Route path="/prozentrechnung" element={<Prozentrechnung />} />
+        <Route path="/bits-und-bytes" element={<BitsUndBytes />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

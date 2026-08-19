@@ -1,0 +1,348 @@
+/* ═══════════════════════════════════════════════════════════════
+   BITS & BYTES – SCOPED STYLES (bb- prefix)
+   Palette lives on .bb-root, never on :root, so it cannot leak
+   into the other pages.
+   ═══════════════════════════════════════════════════════════════ */
+
+.bb-root {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    --bb-primary: oklch(59.6% 0.145 285);
+    --bb-primary-dk: oklch(48% 0.14 285);
+    --bb-bg: #f4f4f6;
+    --bb-surface: #ffffff;
+    --bb-cell-off: #e4e4ec;
+    --bb-cell-off-hover: #d2d2de;
+    --bb-border: oklch(89% 0.025 285);
+    --bb-text: #181e1a;
+    --bb-muted: #687068;
+
+    font-family: "Outfit", sans-serif;
+    background: var(--bb-bg);
+    color: var(--bb-text);
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (prefers-color-scheme: dark) {
+    .bb-root {
+        --bb-primary: oklch(72% 0.15 290);
+        --bb-primary-dk: oklch(80% 0.13 290);
+        --bb-bg: #14151b;
+        --bb-surface: #1c1d25;
+        --bb-cell-off: #2b2d38;
+        --bb-cell-off-hover: #3a3d4b;
+        --bb-border: #32343f;
+        --bb-text: #eceef2;
+        --bb-muted: #9a9fae;
+    }
+}
+
+.bb-root *,
+.bb-root *::before,
+.bb-root *::after {
+    box-sizing: border-box;
+}
+
+/* ── TOPBAR ── */
+.bb-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 14px 24px;
+    background: var(--bb-surface);
+    border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.bb-brand-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bb-primary);
+    flex-shrink: 0;
+}
+
+.bb-brand-title {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--bb-text);
+    line-height: 1.3;
+}
+
+.bb-brand-sub {
+    font-size: 0.72rem;
+    color: var(--bb-muted);
+    line-height: 1.3;
+}
+
+/* ── CONTROLS ── */
+.bb-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bb-btn {
+    background: var(--bb-surface);
+    border: 1.5px solid var(--bb-border);
+    color: var(--bb-text);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-family: "Outfit", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+        border-color 0.16s,
+        color 0.16s;
+    white-space: nowrap;
+}
+
+.bb-btn:hover {
+    border-color: var(--bb-primary);
+    color: var(--bb-primary);
+}
+
+.bb-btn:active {
+    transform: translateY(1px);
+}
+
+/* ── MAIN ── */
+.bb-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 24px 36px;
+}
+
+.bb-lead,
+.bb-hint {
+    max-width: 580px;
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--bb-muted);
+    text-align: center;
+}
+
+.bb-lead strong,
+.bb-hint strong {
+    color: var(--bb-text);
+    font-weight: 600;
+}
+
+.bb-hint {
+    font-size: 0.8rem;
+}
+
+/* ── BOARD ──
+   A column of byte rows: 8 cells plus the raw bits of that row. Cells are
+   large because the point is the picture, not reading numbers. */
+.bb-board {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 16px;
+    background: var(--bb-surface);
+    border: 1px solid var(--bb-border);
+    border-radius: 14px;
+}
+
+.bb-byterow {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ── CELLS ── */
+.bb-cell {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: var(--bb-cell-off);
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.bb-cell:hover {
+    background: var(--bb-cell-off-hover);
+}
+
+.bb-cell.on {
+    background: var(--bb-primary);
+}
+
+.bb-cell.on:hover {
+    background: var(--bb-primary-dk);
+}
+
+.bb-cell:focus-visible {
+    outline: 2px solid var(--bb-primary-dk);
+    outline-offset: 2px;
+}
+
+/* ── PER-ROW BITS ── */
+.bb-readout {
+    padding-left: 12px;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 1px;
+    color: var(--bb-muted);
+    white-space: pre;
+}
+
+/* ── FACTS ── */
+.bb-facts {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 580px;
+}
+
+.bb-fact {
+    flex: 1 1 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 14px;
+    background: var(--bb-surface);
+    border: 1px solid var(--bb-border);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.bb-fact-num {
+    font-family: var(--mono);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--bb-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* the 20-digit number has to shrink to stay on one line */
+.bb-fact-big {
+    font-size: 0.82rem;
+    word-break: break-all;
+}
+
+.bb-fact-lbl {
+    font-size: 0.68rem;
+    color: var(--bb-muted);
+    line-height: 1.35;
+}
+
+/* ── BOTTOMBAR ── */
+.bb-bottombar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 10px 24px;
+    background: var(--bb-surface);
+    border-top: 1px solid var(--bb-border);
+    font-size: 0.74rem;
+    color: var(--bb-muted);
+}
+
+.bb-key-hint {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.bb-kbd {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    padding: 2px 6px;
+    border: 1px solid var(--bb-border);
+    border-radius: 4px;
+    background: var(--bb-bg);
+    color: var(--bb-text);
+}
+
+.bb-counter {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── RESPONSIVE ──
+   Cells shrink to fit the viewport instead of the board overflowing.
+   8 cells + 7 gaps + padding + the bit column must fit 375px, so the bits
+   move below the row and the cells become fluid. */
+@media (max-width: 620px) {
+    .bb-main {
+        padding: 20px 10px 28px;
+        gap: 16px;
+    }
+
+    .bb-board {
+        width: 100%;
+        max-width: 420px;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .bb-byterow {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 4px;
+    }
+
+    /* row 1 is the cells, the raw bits sit underneath */
+    .bb-cell {
+        grid-row: 1;
+        width: auto;
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    .bb-readout {
+        grid-row: 2;
+        grid-column: 1 / -1;
+        padding-left: 0;
+        font-size: 0.66rem;
+        text-align: center;
+    }
+
+    .bb-facts {
+        gap: 8px;
+    }
+
+    .bb-fact {
+        flex-basis: 100%;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+
+    .bb-bottombar {
+        padding: 10px 12px;
+    }
+
+    .bb-key-hint {
+        display: none;
+    }
+}

@@ -34,6 +34,12 @@ const GAMES = [
     description:
       "Lerne, was Prozent bedeutet und wie du damit in Excel rechnest.",
   },
+  {
+    slug: "bits-und-bytes",
+    title: "Bits & Bytes",
+    description:
+      "Zeichne im 8×8-Gitter und sieh, wie viel aus lauter An/Aus entsteht.",
+  },
 ];
 
 const BASE_URL = "https://excel-games.vercel.app";
